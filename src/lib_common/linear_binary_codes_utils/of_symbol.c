@@ -244,25 +244,30 @@ void	of_add_from_multiple_symbols	(void		*to,
 												   
 #else //defined (__LP64__) || (__WORDSIZE == 64) } {
 	
-	/*
-	 * 32-bit machines
-	 */
-	UINT32		*t32 = (UINT32*) to;	// to pointer to 32-bit integers
-	UINT32		*f32 = (UINT32*)  from;	// from pointer	to 32-bit integers
-	/* First perform as many 32-bit XORs as needed... */
-	for (i = symbolSize32; i > 0; i--)
+	while (from_size > 0)
 	{
-		*t32 ^= *f32;
-		t32++;
-		f32++;
-	}
-	/* finally perform as many 8-bit XORs as needed if symbol size is not
-	 * multiple of 32 bits... */
-	if (symbolSize32rem > 0)
-	{
-		for (i = 0; i < symbolSize32rem; i++)
+		/*
+		 * 32-bit machines
+		 */
+		UINT32		*t32 = (UINT32*) to;	// to pointer to 32-bit integers
+		UINT32		*f32 = (UINT32*) from[0];	// from pointer to 32-bit integers
+		from++ ;
+		from_size-- ;
+		/* First perform as many 32-bit XORs as needed... */
+		for (i = symbolSize32; i > 0; i--)
 		{
-			* (UINT8*) ( (UINT8*) t32 + i) ^= * (UINT8*) ( (UINT8*) f32 + i);
+			*t32 ^= *f32;
+			t32++;
+			f32++;
+		}
+		/* finally perform as many 8-bit XORs as needed if symbol size is not
+		 * multiple of 32 bits... */
+		if (symbolSize32rem > 0)
+		{
+			for (i = 0; i < symbolSize32rem; i++)
+			{
+				* (UINT8*) ( (UINT8*) t32 + i) ^= * (UINT8*) ( (UINT8*) f32 + i);
+			}
 		}
 	}
 #endif //defined (__LP64__) || (__WORDSIZE == 64) }
@@ -494,22 +499,27 @@ void	of_add_to_multiple_symbols	(void		**to,
 	/*
 	 * 32-bit machines
 	 */
-	UINT32		*t32 = (UINT32*) to;	// to pointer to 32-bit integers
-	UINT32		*f32 = (UINT32*)  from;	// from pointer	to 32-bit integers
-	/* First perform as many 32-bit XORs as needed... */
-	for (i = symbolSize32; i > 0; i--)
+    while (to_size > 0)
 	{
-		*t32 ^= *f32;
-		t32++;
-		f32++;
-	}
-	/* finally perform as many 8-bit XORs as needed if symbol size is not
-	 * multiple of 32 bits... */
-	if (symbolSize32rem > 0)
-	{
-		for (i = 0; i < symbolSize32rem; i++)
+		UINT32		*t32 = (UINT32*) to[0];	// to pointer to 32-bit integers
+		UINT32		*f32 = (UINT32*)  from;	// from pointer to 32-bit integers
+		to++ ;
+		to_size-- ;
+		/* First perform as many 32-bit XORs as needed... */
+		for (i = symbolSize32; i > 0; i--)
 		{
-			* (UINT8*) ( (UINT8*) t32 + i) ^= * (UINT8*) ( (UINT8*) f32 + i);
+			*t32 ^= *f32;
+			t32++;
+			f32++;
+		}
+		/* finally perform as many 8-bit XORs as needed if symbol size is not
+		 * multiple of 32 bits... */
+		if (symbolSize32rem > 0)
+		{
+			for (i = 0; i < symbolSize32rem; i++)
+			{
+				* (UINT8*) ( (UINT8*) t32 + i) ^= * (UINT8*) ( (UINT8*) f32 + i);
+			}
 		}
 	}
 #endif //defined (__LP64__) || (__WORDSIZE == 64) }
