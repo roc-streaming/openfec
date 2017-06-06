@@ -398,7 +398,7 @@ of_status_t	of_rs_2_m_finish_decoding (of_rs_2_m_cb_t*	ofcb)
 	//char ** tmp_buf = (char**)malloc(n*sizeof(char*)); // ???? WRT RS(255)
 	if (ofcb->nb_available_symbols < k)
 	{
-		OF_PRINT_ERROR(("ERROR: nb received symbols < nb source symbols\n"))
+		OF_TRACE_LVL( 1, ("WARNING: nb received symbols < nb source symbols\n"))
 			OF_EXIT_FUNCTION
 			return OF_STATUS_FAILURE;
 	}
@@ -555,7 +555,7 @@ of_status_t	of_rs_2_m_get_source_symbols_tab (of_rs_2_m_cb_t*	ofcb,
 	OF_ENTER_FUNCTION
 	if (of_rs_2_m_is_decoding_complete(ofcb) == false)
 	{
-		OF_PRINT_ERROR(("ERROR: decoding not complete.\n"))
+		OF_TRACE_LVL( 1, ("WARNING: decoding not complete.\n"))
 		OF_EXIT_FUNCTION
 		return OF_STATUS_ERROR;
 	}
