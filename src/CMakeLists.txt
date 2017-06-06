@@ -1,6 +1,13 @@
 file (GLOB_RECURSE openfec_sources *)
 
-add_library(openfec  SHARED  ${openfec_sources})
+# Use -DBUILD_STATIC_LIBS=ON to build static libraries instead of shared.
+option(BUILD_STATIC_LIBS "Build the static library" OFF)
+
+if(BUILD_STATIC_LIBS)
+  add_library(openfec STATIC ${openfec_sources})
+else(BUILD_STATIC_LIBS)
+  add_library(openfec SHARED ${openfec_sources})
+endif(BUILD_STATIC_LIBS)
 
 # From: $cmake --help-property SOVERSION
 #		For shared libraries VERSION and SOVERSION can be used to specify
