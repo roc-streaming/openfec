@@ -249,6 +249,10 @@ of_linear_binary_code_finish_decoding_with_ml (of_linear_binary_code_cb_t	*ofcb)
 			nb_computed_repair_in_ml++;
 		}
 	}
+	while (nb_computed_repair_in_ml < of_mod2dense_cols (dense_pchk_matrix_simplified)) {
+		of_free(variable_member[nb_computed_repair_in_ml]);
+		nb_computed_repair_in_ml++;
+	}
 #ifdef DEBUG
 	if (of_is_decoding_complete (ofcb))
 	{
