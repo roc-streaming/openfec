@@ -263,12 +263,14 @@ of_linear_binary_code_finish_decoding_with_ml (of_linear_binary_code_cb_t	*ofcb)
 	OF_TRACE_LVL (1, ("gauss_decoding_end=%ld.%ld   gauss_decoding_time=%ld.%06ld \n",
 			gdtv1.tv_sec, gdtv1.tv_usec, gdtv_delta.tv_sec, gdtv_delta.tv_usec))
 #endif
-
-	for (i = 0; i < of_mod2dense_rows (dense_pchk_matrix_simplified); i++)
+	if (const_term != NULL)
 	{
-		if (const_term[i])
+		for (i = 0; i < of_mod2dense_rows (dense_pchk_matrix_simplified); i++)
 		{
-			of_free(const_term[i]);
+			if (const_term[i])
+			{
+				of_free(const_term[i]);
+			}
 		}
 	}
 	of_free(const_term);
