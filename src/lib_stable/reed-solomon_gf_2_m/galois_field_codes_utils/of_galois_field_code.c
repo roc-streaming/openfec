@@ -36,6 +36,18 @@
 
 #ifdef OF_USE_REED_SOLOMON_2_M_CODEC
 
+/*
+ * compatibility stuff
+ */
+#if defined(WIN32) || defined(__ANDROID__)
+#define NEED_BCOPY
+#define bcmp(a,b,n) error
+#endif
+
+#ifdef NEED_BCOPY
+#define bcopy(s, d, siz)        memcpy((d), (s), (siz))
+#define bzero(d, siz)   memset((d), '\0', (siz))
+#endif
 
 gf of_modnn(of_galois_field_code_cb_t* ofcb,INT32 x)
 {

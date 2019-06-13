@@ -43,6 +43,19 @@
 #define GF_ADDMULC_COMPACT(dst,x)	{dst = (dst>>4 ^ __gf_mulc_[x>>4])<<4 |(dst & 0x0F ^ __gf_mulc_[x & 0x0F]); }
 
 /*
+ * compatibility stuff
+ */
+#if defined(WIN32) || defined(__ANDROID__)
+#define NEED_BCOPY
+#define bcmp(a,b,n) memcmp(a,b,n)
+#endif
+
+#ifdef NEED_BCOPY
+#define bcopy(s, d, siz)        memcpy((d), (s), (siz))
+#define bzero(d, siz)   memset((d), '\0', (siz))
+#endif
+
+/*
  * addmul() computes dst[] = dst[] + c * src[]
  * This is used often, so better optimize it! Currently the loop is
  * unrolled 16 times, a good value for 486 and pentium-class machines.

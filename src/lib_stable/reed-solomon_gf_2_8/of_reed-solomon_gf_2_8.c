@@ -46,7 +46,7 @@
 /*
  * compatibility stuff
  */
-#if defined(WIN32)	/* but also for others, e.g. sun... */
+#if defined(WIN32) || defined(__ANDROID__)
 #define NEED_BCOPY
 #define bcmp(a,b,n) memcmp(a,b,n)
 #endif
