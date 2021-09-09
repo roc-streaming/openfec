@@ -1,0 +1,4 @@
+#! /usr/bin/dh-exec
+src/lib_advanced usr/include/openfec
+src/lib_common usr/include/openfec
+src/lib_stable usr/include/openfec
