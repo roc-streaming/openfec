@@ -1,0 +1,7 @@
+#! /usr/bin/dh-exec
+bin/Release/eperftool usr/bin
+bin/Release/simple_client usr/bin
+bin/Release/simple_server usr/bin
+bin/Release/test_code_params usr/bin
+bin/Release/test_create_instance usr/bin
+bin/Release/test_encoder_instance usr/bin
