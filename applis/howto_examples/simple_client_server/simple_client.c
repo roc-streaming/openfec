@@ -114,7 +114,7 @@ main (int argc, char* argv[])
 	}
 	if (len != sizeof(fec_oti_t))
 	{
-		OF_PRINT_ERROR(("FEC OTI reception failed: bad size, expected %lu but received %d instead\n", sizeof(fec_oti_t), ret))
+		OF_PRINT_ERROR(("FEC OTI reception failed: bad size, expected %zu but received %d instead\n", sizeof(fec_oti_t), ret))
 		ret = -1;
 		goto end;
 	}

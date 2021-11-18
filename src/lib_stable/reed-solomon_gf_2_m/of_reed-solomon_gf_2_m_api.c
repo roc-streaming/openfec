@@ -589,7 +589,7 @@ of_status_t	of_rs_2_m_set_control_parameter (of_rs_2_m_cb_t*	ofcb,
 	switch (type) {
 		case OF_RS_CTRL_SET_FIELD_SIZE:
 			if (value == NULL || length != sizeof(UINT16)) {
-				OF_PRINT_ERROR(("OF_CTRL_SET_FIELD_SIZE ERROR: null value or bad length (got %d, expected %ld)\n", length, sizeof(UINT16)))
+				OF_PRINT_ERROR(("OF_CTRL_SET_FIELD_SIZE ERROR: null value or bad length (got %d, expected %zu)\n", length, sizeof(UINT16)))
 				goto error;
 			}
 			m = *(UINT16*)value;
@@ -624,7 +624,7 @@ of_status_t	of_rs_2_m_get_control_parameter (of_rs_2_m_cb_t*	ofcb,
 	switch (type) {
 	case OF_CTRL_GET_MAX_K:
 		if (value == NULL || length != sizeof(UINT32)) {
-			OF_PRINT_ERROR(("OF_CTRL_GET_MAX_K ERROR: null value or bad length (got %d, expected %ld)\n", length, sizeof(UINT32)))
+			OF_PRINT_ERROR(("OF_CTRL_GET_MAX_K ERROR: null value or bad length (got %d, expected %zu)\n", length, sizeof(UINT32)))
 			goto error;
 		}
 		if (ofcb->max_nb_source_symbols == 0) {
@@ -637,7 +637,7 @@ of_status_t	of_rs_2_m_get_control_parameter (of_rs_2_m_cb_t*	ofcb,
 
 	case OF_CTRL_GET_MAX_N:
 		if (value == NULL || length != sizeof(UINT32)) {
-			OF_PRINT_ERROR(("OF_CTRL_GET_MAX_N ERROR: null value or bad length (got %d, expected %ld)\n", length, sizeof(UINT32)))
+			OF_PRINT_ERROR(("OF_CTRL_GET_MAX_N ERROR: null value or bad length (got %d, expected %zu)\n", length, sizeof(UINT32)))
 			goto error;
 		}
 		if (ofcb->max_nb_encoding_symbols == 0) {
