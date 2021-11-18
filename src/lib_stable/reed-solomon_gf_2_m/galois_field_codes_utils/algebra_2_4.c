@@ -87,32 +87,76 @@ void         of_galois_field_2_4_addmul1(gf *dst1, gf *src1, gf c, int sz)
         {			
 #if ((defined (__LP64__) || (__WORDSIZE == 64)) && !defined (OF_RS_2M_USE_32BITS))	
 		/* perform 64-bit operations for improved performances on 64-bit systems */
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT64)__gf_mulc_[src[0]]) | ((UINT64)__gf_mulc_[src[1]]<<8) | ((UINT64)__gf_mulc_[src[2]]<<16) |
 			((UINT64)__gf_mulc_[src[3]]<<24) | ((UINT64)__gf_mulc_[src[4]]<<32) | ((UINT64)__gf_mulc_[src[5]]<<40) |
 			((UINT64)__gf_mulc_[src[6]]<<48) | ((UINT64)__gf_mulc_[src[7]]<<56) ;
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT64)__gf_mulc_[src[7]]) | ((UINT64)__gf_mulc_[src[6]]<<8) | ((UINT64)__gf_mulc_[src[5]]<<16) |
+			((UINT64)__gf_mulc_[src[4]]<<24) | ((UINT64)__gf_mulc_[src[3]]<<32) | ((UINT64)__gf_mulc_[src[2]]<<40) |
+			((UINT64)__gf_mulc_[src[1]]<<48) | ((UINT64)__gf_mulc_[src[0]]<<56) ;
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_64 ^= tmp;
 		dst_64++;
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT64)__gf_mulc_[src[8]]) | ((UINT64)__gf_mulc_[src[9]]<<8) | ((UINT64)__gf_mulc_[src[10]]<<16) |
 			((UINT64)__gf_mulc_[src[11]]<<24) | ((UINT64)__gf_mulc_[src[12]]<<32) | ((UINT64)__gf_mulc_[src[13]]<<40) |
 			((UINT64)__gf_mulc_[src[14]]<<48) | ((UINT64)__gf_mulc_[src[15]]<<56) ;
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT64)__gf_mulc_[src[15]]) | ((UINT64)__gf_mulc_[src[14]]<<8) | ((UINT64)__gf_mulc_[src[13]]<<16) |
+			((UINT64)__gf_mulc_[src[12]]<<24) | ((UINT64)__gf_mulc_[src[11]]<<32) | ((UINT64)__gf_mulc_[src[10]]<<40) |
+			((UINT64)__gf_mulc_[src[9]]<<48) | ((UINT64)__gf_mulc_[src[8]]<<56) ;
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_64 ^= tmp;
 		dst_64++;
 #else
 		/* otherwise perform 32-bit operations on 32-bit systems */
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT32)__gf_mulc_[src[0]]) | ((UINT32)__gf_mulc_[src[1]]<<8) | ((UINT32)__gf_mulc_[src[2]]<<16) |
 			((UINT32)__gf_mulc_[src[3]]<<24);
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT32)__gf_mulc_[src[3]]) | ((UINT32)__gf_mulc_[src[2]]<<8) | ((UINT32)__gf_mulc_[src[1]]<<16) |
+			((UINT32)__gf_mulc_[src[0]]<<24);
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_32 ^= tmp;
 		dst_32++;
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT32)__gf_mulc_[src[4]]) | ((UINT32)__gf_mulc_[src[5]]<<8) | ((UINT32)__gf_mulc_[src[6]]<<16) |
 			((UINT32)__gf_mulc_[src[7]]<<24);
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT32)__gf_mulc_[src[7]]) | ((UINT32)__gf_mulc_[src[6]]<<8) | ((UINT32)__gf_mulc_[src[5]]<<16) |
+			((UINT32)__gf_mulc_[src[4]]<<24);
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_32 ^= tmp;
 		dst_32++;
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT32)__gf_mulc_[src[8]]) | ((UINT32)__gf_mulc_[src[9]]<<8) | ((UINT32)__gf_mulc_[src[10]]<<16) |
 			((UINT32)__gf_mulc_[src[11]]<<24);
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT32)__gf_mulc_[src[11]]) | ((UINT32)__gf_mulc_[src[10]]<<8) | ((UINT32)__gf_mulc_[src[9]]<<16) |
+			((UINT32)__gf_mulc_[src[8]]<<24);
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_32 ^= tmp;
 		dst_32++;		
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT32)__gf_mulc_[src[12]]) | ((UINT32)__gf_mulc_[src[13]]<<8) | ((UINT32)__gf_mulc_[src[14]]<<16) |
 			((UINT32)__gf_mulc_[src[15]]<<24);
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT32)__gf_mulc_[src[15]]) | ((UINT32)__gf_mulc_[src[14]]<<8) | ((UINT32)__gf_mulc_[src[13]]<<16) |
+			((UINT32)__gf_mulc_[src[12]]<<24);
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_32 ^= tmp;
 		dst_32++;			
 #endif
@@ -155,32 +199,76 @@ void         of_galois_field_2_4_addmul1_compact (gf *dst1, gf *src1, gf c, int 
         {
 #if ((defined (__LP64__) || (__WORDSIZE == 64)) && !defined (OF_RS_2M_USE_32BITS))	
 		/* perform 64-bit operations for improved performances on 64-bit systems */
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT64)__gf_mulc_[src[0]]) | ((UINT64)__gf_mulc_[src[1]]<<8) | ((UINT64)__gf_mulc_[src[2]]<<16) |
 			((UINT64)__gf_mulc_[src[3]]<<24) | ((UINT64)__gf_mulc_[src[4]]<<32) | ((UINT64)__gf_mulc_[src[5]]<<40) |
 			((UINT64)__gf_mulc_[src[6]]<<48) | ((UINT64)__gf_mulc_[src[7]]<<56) ;
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT64)__gf_mulc_[src[7]]) | ((UINT64)__gf_mulc_[src[6]]<<8) | ((UINT64)__gf_mulc_[src[5]]<<16) |
+			((UINT64)__gf_mulc_[src[4]]<<24) | ((UINT64)__gf_mulc_[src[3]]<<32) | ((UINT64)__gf_mulc_[src[2]]<<40) |
+			((UINT64)__gf_mulc_[src[1]]<<48) | ((UINT64)__gf_mulc_[src[0]]<<56) ;
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_64 ^= tmp;
 		dst_64++;
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT64)__gf_mulc_[src[8]]) | ((UINT64)__gf_mulc_[src[9]]<<8) | ((UINT64)__gf_mulc_[src[10]]<<16) |
 			((UINT64)__gf_mulc_[src[11]]<<24) | ((UINT64)__gf_mulc_[src[12]]<<32) | ((UINT64)__gf_mulc_[src[13]]<<40) |
 			((UINT64)__gf_mulc_[src[14]]<<48) | ((UINT64)__gf_mulc_[src[15]]<<56) ;
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT64)__gf_mulc_[src[15]]) | ((UINT64)__gf_mulc_[src[14]]<<8) | ((UINT64)__gf_mulc_[src[13]]<<16) |
+			((UINT64)__gf_mulc_[src[12]]<<24) | ((UINT64)__gf_mulc_[src[11]]<<32) | ((UINT64)__gf_mulc_[src[10]]<<40) |
+			((UINT64)__gf_mulc_[src[9]]<<48) | ((UINT64)__gf_mulc_[src[8]]<<56) ;
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_64 ^= tmp;
 		dst_64++;
 #else
 		/* otherwise perform 32-bit operations on 32-bit systems */
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT32)__gf_mulc_[src[0]]) | ((UINT32)__gf_mulc_[src[1]]<<8) | ((UINT32)__gf_mulc_[src[2]]<<16) |
 			((UINT32)__gf_mulc_[src[3]]<<24);
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT32)__gf_mulc_[src[3]]) | ((UINT32)__gf_mulc_[src[2]]<<8) | ((UINT32)__gf_mulc_[src[1]]<<16) |
+			((UINT32)__gf_mulc_[src[0]]<<24);
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_32 ^= tmp;
 		dst_32++;
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT32)__gf_mulc_[src[4]]) | ((UINT32)__gf_mulc_[src[5]]<<8) | ((UINT32)__gf_mulc_[src[6]]<<16) |
 			((UINT32)__gf_mulc_[src[7]]<<24);
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT32)__gf_mulc_[src[7]]) | ((UINT32)__gf_mulc_[src[6]]<<8) | ((UINT32)__gf_mulc_[src[5]]<<16) |
+			((UINT32)__gf_mulc_[src[4]]<<24);
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_32 ^= tmp;
 		dst_32++;
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT32)__gf_mulc_[src[8]]) | ((UINT32)__gf_mulc_[src[9]]<<8) | ((UINT32)__gf_mulc_[src[10]]<<16) |
 			((UINT32)__gf_mulc_[src[11]]<<24);
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT32)__gf_mulc_[src[11]]) | ((UINT32)__gf_mulc_[src[10]]<<8) | ((UINT32)__gf_mulc_[src[9]]<<16) |
+			((UINT32)__gf_mulc_[src[8]]<<24);
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_32 ^= tmp;
 		dst_32++;		
+#if defined (OPENFEC_LITTLE_ENDIAN)
 		tmp =	((UINT32)__gf_mulc_[src[12]]) | ((UINT32)__gf_mulc_[src[13]]<<8) | ((UINT32)__gf_mulc_[src[14]]<<16) |
 			((UINT32)__gf_mulc_[src[15]]<<24);
+#elif defined (OPENFEC_BIG_ENDIAN)
+		tmp =	((UINT32)__gf_mulc_[src[15]]) | ((UINT32)__gf_mulc_[src[14]]<<8) | ((UINT32)__gf_mulc_[src[13]]<<16) |
+			((UINT32)__gf_mulc_[src[12]]<<24);
+#else // ! defined (OPENFEC_LITTLE_ENDIAN) || defined (OPENFEC_BIG_ENDIAN)
+#error "Unknown endianness"
+#endif
 		*dst_32 ^= tmp;
 		dst_32++;				
 #endif			
