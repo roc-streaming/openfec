@@ -269,7 +269,7 @@ encode (void)
 	OF_PRINT(("encoding_start=%lI64f\n", (double)tv0.QuadPart / (double)freq.QuadPart))
 #else
 	gettimeofday(&tv0, NULL);
-	OF_PRINT(("encoding_start=%ld.%d\n", tv0.tv_sec, tv0.tv_usec))
+	OF_PRINT(("encoding_start=%ld.%ld\n", tv0.tv_sec, (long)tv0.tv_usec))
 #endif
 	for (sbn = 0, blk = blk_cb_tab; sbn < tot_nb_blocks; sbn++, blk++) {
 		k = blk->k;
@@ -369,8 +369,8 @@ encode (void)
 #else
 	gettimeofday(&tv1, NULL);
 	timersub(&tv1, &tv0, &tv_delta);
-	OF_PRINT(("encoding_end=%ld.%d  encoding_time=%ld.%06d\n",
-		tv1.tv_sec, tv1.tv_usec, tv_delta.tv_sec, tv_delta.tv_usec))
+	OF_PRINT(("encoding_end=%ld.%ld  encoding_time=%ld.%06ld\n",
+		tv1.tv_sec, (long)tv1.tv_usec, tv_delta.tv_sec, (long)tv_delta.tv_usec))
 #endif
 	free(encoding_symbols_tab);
 	return OF_STATUS_OK;
