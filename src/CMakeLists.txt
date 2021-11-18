@@ -34,3 +34,11 @@ target_link_libraries(openfec m)
 
 #target_link_libraries(openfec pthread IL)
 #target_link_libraries(openfec pthread)
+
+include(TestBigEndian)
+test_big_endian(BIG_ENDIAN)
+if(BIG_ENDIAN)
+  target_compile_definitions(openfec PRIVATE OPENFEC_BIG_ENDIAN)
+else(BIG_ENDIAN)
+  target_compile_definitions(openfec PRIVATE OPENFEC_LITTLE_ENDIAN)
+endif(BIG_ENDIAN)
