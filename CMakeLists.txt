@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 2.6)
 ##project
 project(openfec C)
 
+set(PROJECT_VERSION "1.4.2.4")
+set(PROJECT_DESCRIPTION "Application-Level Forward Erasure Correction implementation library")
+
 ENABLE_TESTING()
 
 if (PROFILING STREQUAL "ON")
@@ -34,6 +37,7 @@ MARK_AS_ADVANCED(
 
 link_directories(${LIBRARY_OUTPUT_PATH})
 
+add_subdirectory(pc)
 add_subdirectory(src)
 add_subdirectory(applis/eperftool)
 add_subdirectory(applis/howto_examples/simple_client_server)
