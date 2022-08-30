@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.0.2)
 
 ##project
 project(openfec C)
+include(GNUInstallDirs)
 
 execute_process(
   OUTPUT_VARIABLE GIT_TAG
@@ -27,7 +28,7 @@ endif(PROFILING STREQUAL "ON")
 if (DEBUG STREQUAL "ON")
 # Debug mode
 ADD_DEFINITIONS(-DOF_DEBUG)
-set(CMAKE_BUILD_TYPE Debug) 
+set(CMAKE_BUILD_TYPE Debug)
 message(STATUS "Debug mode ON" )
 
 else(DEBUG STREQUAL "ON")
