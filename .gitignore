@@ -1,0 +1,5 @@
+/build
+/bin
+/perf_eval/descr_stats
+/pc/openfec.pc
+._*
