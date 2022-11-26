@@ -3,7 +3,17 @@ cmake_minimum_required(VERSION 2.6)
 ##project
 project(openfec C)
 
-set(PROJECT_VERSION "1.4.2.4")
+execute_process(
+  OUTPUT_VARIABLE GIT_TAG
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+  COMMAND git describe --tags --abbrev=0
+  )
+string(REGEX MATCH "v?([0-9.]+)" RESULT ${GIT_TAG})
+set(GIT_TAG "${CMAKE_MATCH_1}")
+
+message(STATUS "Detected version from git: ${GIT_TAG}")
+
+set(PROJECT_VERSION "${GIT_TAG}")
 set(PROJECT_DESCRIPTION "Application-Level Forward Erasure Correction implementation library")
 
 ENABLE_TESTING()
