@@ -34,8 +34,14 @@ message(STATUS "Debug mode ON" )
 else(DEBUG STREQUAL "ON")
 # Release mode
 set(CMAKE_BUILD_TYPE Release)
-set(CMAKE_C_FLAGS "-O4")
+set(OPTIMIZE "3" CACHE STRING "Set optimization level (0-3 or DEFAULT)")
+if (NOT OPTIMIZE STREQUAL "DEFAULT")
+  string(REGEX REPLACE "(-O[A-Za-z0-9]+)" "" CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+  string(REGEX REPLACE "(-O[A-Za-z0-9]+)" "" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+  set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O${OPTIMIZE}")
+endif()
 message(STATUS "Debug mode OFF")
+message(STATUS "Optimization level ${OPTIMIZE}")
 
 endif (DEBUG STREQUAL "ON")
 
