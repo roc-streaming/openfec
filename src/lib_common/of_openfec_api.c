@@ -491,7 +491,7 @@ of_status_t	of_set_available_symbols (of_session_t*	ses,
 		OF_PRINT_ERROR ( ("Error, bad encoding_symbols_tab (null)\n"))
 		goto error;
 	}
-	if (!((of_cb_t*) ses)->codec_type & OF_DECODER)
+	if (!(((of_cb_t*) ses)->codec_type & OF_DECODER))
 	{
 		OF_PRINT_ERROR ( ("Error, bad codec_type\n"))
 		goto error;
@@ -546,7 +546,7 @@ of_status_t	of_finish_decoding (of_session_t*	ses)
 		OF_PRINT_ERROR ( ("Error, bad ses pointer (null)\n"))
 		goto error;
 	}
-	if (!((of_cb_t*) ses)->codec_type & OF_DECODER)
+	if (!(((of_cb_t*) ses)->codec_type & OF_DECODER))
 	{
 		OF_PRINT_ERROR ( ("Error, bad codec_type\n"))
 		goto error;
@@ -601,7 +601,7 @@ bool of_is_decoding_complete (of_session_t*	ses)
 		OF_PRINT_ERROR ( ("Error, bad ses pointer (null)\n"))
 		goto error;
 	}
-	if (!((of_cb_t*) ses)->codec_type & OF_DECODER)
+	if (!(((of_cb_t*) ses)->codec_type & OF_DECODER))
 	{
 		OF_PRINT_ERROR ( ("Error, bad codec_type\n"))
 		goto error;
@@ -659,7 +659,7 @@ of_status_t	of_get_source_symbols_tab (of_session_t*	ses,
 		OF_PRINT_ERROR ( ("Error, bad ses pointer (null)\n"))
 		goto error;
 	}
-	if (!((of_cb_t*) ses)->codec_type & OF_DECODER)
+	if (!(((of_cb_t*) ses)->codec_type & OF_DECODER))
 	{
 		OF_PRINT_ERROR ( ("Error, bad codec_type\n"))
 		goto error;
