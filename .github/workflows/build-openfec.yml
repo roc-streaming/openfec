@@ -43,14 +43,19 @@ jobs:
           cd build
           make -j2
 
-  package:
+  release:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
+    needs: [build]
 
     steps:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
+
+    - id: get-info
+      run: |
+        echo "GIT_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
 
     - id: debianise
       uses: twojstaryzdomu/debianise@HEAD
@@ -60,14 +65,14 @@ jobs:
         package: openfec
         debug: true
 
-    - id: action-gh-release
+    - id: publish-release
       uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         files: ${{ steps.debianise.outputs.files }}
-        name: ${{ steps.debianise.outputs.release_name }}
-        tag_name: ${{ steps.debianise.outputs.tag_name }}
+        name: ${{ steps.get-info.outputs.GIT_TAG }}
+        tag_name: ${{ steps.get-info.outputs.GIT_TAG }}
         fail_on_unmatched_files: true
         draft: true
         prerelease: true
