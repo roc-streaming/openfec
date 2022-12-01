@@ -4,17 +4,11 @@ cmake_minimum_required(VERSION 3.0.2)
 project(openfec C)
 include(GNUInstallDirs)
 
-execute_process(
-  OUTPUT_VARIABLE GIT_TAG
-  OUTPUT_STRIP_TRAILING_WHITESPACE
-  COMMAND git describe --tags --abbrev=0
-  )
-string(REGEX MATCH "v?([0-9.]+)" RESULT ${GIT_TAG})
-set(GIT_TAG "${CMAKE_MATCH_1}")
+file(READ ${PROJECT_SOURCE_DIR}/.version VERSION_TAG)
+string(REGEX REPLACE "\n$" "" VERSION_TAG "${VERSION_TAG}")
+message(STATUS "Project version: ${VERSION_TAG}")
 
-message(STATUS "Detected version from git: ${GIT_TAG}")
-
-set(PROJECT_VERSION "${GIT_TAG}")
+set(PROJECT_VERSION "${VERSION_TAG}")
 set(PROJECT_DESCRIPTION "Application-Level Forward Erasure Correction implementation library")
 
 ENABLE_TESTING()
