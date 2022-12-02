@@ -37,6 +37,11 @@ target_link_libraries(openfec m)
 
 install(TARGETS openfec DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
 
+install(
+    DIRECTORY ${PROJECT_SOURCE_DIR}/src/
+    DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR}/openfec
+    FILES_MATCHING PATTERN "*.h*")
+
 include(TestBigEndian)
 test_big_endian(BIG_ENDIAN)
 if(BIG_ENDIAN)

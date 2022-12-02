@@ -1,4 +1,8 @@
-cmake_minimum_required(VERSION 3.0.2)
+if(CMAKE_MAJOR_VERSION LESS 3)
+  cmake_minimum_required(VERSION 2.6)
+else()
+  cmake_minimum_required(VERSION 2.8.12)
+endif()
 
 ##project
 project(openfec C)
@@ -39,12 +43,16 @@ message(STATUS "Optimization level ${OPTIMIZE}")
 
 endif (DEBUG STREQUAL "ON")
 
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}
+  CACHE STRING "output path for libraries")
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}
+  CACHE STRING "output path for executables")
 MARK_AS_ADVANCED(
         LIBRARY_OUTPUT_PATH
         EXECUTABLE_OUTPUT_PATH
 )
+
+option(INSTALL_DEVTOOLS "install developer tools into the system" OFF)
 
 link_directories(${LIBRARY_OUTPUT_PATH})
 
