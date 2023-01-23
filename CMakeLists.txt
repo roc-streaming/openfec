@@ -52,7 +52,7 @@ MARK_AS_ADVANCED(
         EXECUTABLE_OUTPUT_PATH
 )
 
-option(INSTALL_DEVTOOLS "install developer tools into the system" OFF)
+option(INSTALL_DEVTOOLS "install developer tools to the system" OFF)
 
 link_directories(${LIBRARY_OUTPUT_PATH})
 
