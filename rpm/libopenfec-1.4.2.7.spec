@@ -4,16 +4,16 @@
   /usr/lib/rpm/brp-suse
 %undefine       _disable_source_fetch
 %define         major 1.4.2
-%define         minor 4
+%define         minor 7
 %define         pkgname openfec
 Name:           lib%{pkgname}
 Version:        %{major}.%{minor}
-Release:        6%{?dist}
+Release:        1%{?dist}
 Summary:        Application-Level Forward Erasure Correction implementation library
 
 License:        CeCCIL-C_V1 AND CeCILL_V2
 URL:            http://openfec.org
-Source:         https://github.com/roc-project/openfec/archive/v%{version}.tar.gz
+Source:         https://github.com/roc-streaming/openfec/archive/v%{version}.tar.gz
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 BuildRequires:  cmake
@@ -42,11 +42,8 @@ Development package for Application-Level Forward Erasure Correction implementat
 mkdir -p %{buildroot}/%{_bindir} \
         %{buildroot}/%{_libdir}/pkgconfig \
         %{buildroot}/%{_includedir}/%{pkgname}
-for f in bin/Rel*/{eperftool,simple_*,test_*}; do
-  install ${f} %{buildroot}/%{_bindir}/
-done
 install bin/Rel*/%{name}.so.%{major} %{buildroot}/%{_libdir}/
-install build/pc/%{pkgname}.pc %{buildroot}/%{_libdir}/pkgconfig/
+install pc/%{pkgname}.pc %{buildroot}/%{_libdir}/pkgconfig/
 ln -s %{_libdir}/%{name}.so.1 %{buildroot}/%{_libdir}/%{name}.so
 ln -s %{_libdir}/%{name}.so.%{major} %{buildroot}/%{_libdir}/%{name}.so.1
 (cd src; find . -name '*.h' -exec cp -pr --parents {} %{buildroot}/%{_includedir}/%{pkgname} \;)
@@ -67,11 +64,3 @@ ln -s %{_libdir}/%{name}.so.%{major} %{buildroot}/%{_libdir}/%{name}.so.1
 %license Licence_CeCILL_V2-en.txt
 %{_libdir}/pkgconfig/*
 %{_includedir}/%{pkgname}/*
-
-%changelog
-* Tue Jun 28 2022 twojstaryzdomu - 1.4.2.4-6
-- Updated attributes
-- Removed committed pkgconfig patch
-* Tue Feb  1 2022 twojstaryzdomu - 1.4.2.4-5
-- Added pkgconfig template patch
-- Use cmake rpm macros
