@@ -1,5 +1,6 @@
 /build
 /bin
+/dist
 /perf_eval/descr_stats
 /pc/openfec.pc
 ._*

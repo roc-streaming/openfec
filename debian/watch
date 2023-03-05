@@ -1,4 +1,4 @@
 version=4
 opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%openfec-$1\.tar\.gz%" \
-  https://github.com/roc-project/openfec/tags \
+  https://github.com/roc-streaming/openfec/tags \
   (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

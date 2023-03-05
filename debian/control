@@ -5,8 +5,8 @@ Maintainer: unknown <pi@d0>
 Build-Depends: debhelper (>= 11)
 Standards-Version: 4.1.3
 Homepage: http://openfec.org
-Vcs-Browser: https://github.com/roc-project/openfec
-Vcs-Git: git://github.com/roc-project/openfec
+Vcs-Browser: https://github.com/roc-streaming/openfec
+Vcs-Git: git://github.com/roc-streaming/openfec
 
 Package: libopenfec
 Section: libs
@@ -14,14 +14,6 @@ Architecture: any
 Multi-Arch: same
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Application-Level Forward Erasure Correction implementation library - runtime
- Application-Level Forward Erasure Correction implementation library
-
-Package: libopenfec-tools
-Section: utils
-Architecture: any
-Multi-Arch: same
-Depends: ${shlibs:Depends}, ${misc:Depends}, libopenfec (= ${binary:Version})
-Description: Application-Level Forward Erasure Correction implementation library - utilities
  Application-Level Forward Erasure Correction implementation library
 
 Package: libopenfec-dev
