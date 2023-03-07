@@ -4,7 +4,7 @@
   /usr/lib/rpm/brp-suse
 %undefine       _disable_source_fetch
 %define         major 1.4.2
-%define         minor 7
+%define         minor 8
 %define         pkgname openfec
 Name:           lib%{pkgname}
 Version:        %{major}.%{minor}
