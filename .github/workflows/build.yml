@@ -76,7 +76,7 @@ jobs:
         image: debian:stable
         package: openfec
         create_changelog: true
-        install_build_depends: false
+        install_build_depends: true
 
     - name: Publish
       uses: softprops/action-gh-release@v1

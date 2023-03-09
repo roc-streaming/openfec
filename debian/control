@@ -2,7 +2,7 @@ Source: openfec
 Section: unknown
 Priority: optional
 Maintainer: unknown <pi@d0>
-Build-Depends: debhelper (>= 11)
+Build-Depends: debhelper (>= 11), gcc, cmake, make
 Standards-Version: 4.1.3
 Homepage: http://openfec.org
 Vcs-Browser: https://github.com/roc-streaming/openfec
