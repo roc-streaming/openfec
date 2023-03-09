@@ -71,12 +71,12 @@ jobs:
 
     - name: Debian package
       id: deb
-      uses: twojstaryzdomu/debianise@HEAD
+      uses: gavv/debianise@HEAD
       with:
+        image: debian:stable
+        package: openfec
         create_changelog: true
         install_build_depends: false
-        package: openfec
-        debug: true
 
     - name: Publish
       uses: softprops/action-gh-release@v1
