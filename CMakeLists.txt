@@ -1,7 +1,11 @@
 if(CMAKE_MAJOR_VERSION LESS 3)
   cmake_minimum_required(VERSION 2.6)
 else()
-  cmake_minimum_required(VERSION 2.8.12)
+  if(CMAKE_MINOR_VERSION LESS 6)
+    cmake_minimum_required(VERSION 2.8.12)
+  else()
+    cmake_minimum_required(VERSION 3.6)
+  endif()
 endif()
 
 ##project
