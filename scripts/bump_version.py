@@ -5,7 +5,7 @@ import os
 import os.path
 import re
 
-os.chdir(os.path.dirname(__file__))
+os.chdir(os.path.dirname(os.path.dirname(__file__)))
 
 with open('.version') as fp:
     old_ver = fp.read().strip()
