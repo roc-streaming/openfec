@@ -36,12 +36,22 @@
  * knowledge of the CeCILL-C license and that you accept its terms.
  */
 
-#define OF_USE_ENCODER
-#define OF_USE_DECODER
 #include "../src/lib_common/of_openfec_api.h"
 #include "../src/lib_stable/ldpc_staircase/of_ldpc_staircase_api.h"
 #include "../src/lib_stable/reed-solomon_gf_2_8/of_reed-solomon_gf_2_8_api.h"
 #include "../src/lib_common/of_debug.h"
+
+#ifndef OF_USE_ENCODER
+#error "OF_USE_ENCODER undefined"
+#endif
+
+#ifndef OF_USE_DECODER
+#error "OF_USE_DECODER undefined"
+#endif
+
+#ifndef OF_USE_LDPC_STAIRCASE_CODEC
+#error "OF_USE_LDPC_STAIRCASE_CODEC undefined"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>

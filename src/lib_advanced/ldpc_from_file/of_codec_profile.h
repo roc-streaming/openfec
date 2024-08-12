@@ -33,7 +33,7 @@
 
 /****** GENERAL SETUP OPTIONS; EDIT AS APPROPRIATE ****************************/
 
-#define OF_USE_LDPC_FROM_FILE_CODEC
+#include "../../lib_common/of_build_config.h"
 
 #define READ_MATRIX_FILE
 

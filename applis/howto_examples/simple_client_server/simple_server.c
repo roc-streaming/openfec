@@ -31,10 +31,19 @@
  * knowledge of the CeCILL-C license and that you accept its terms.
  */
 
-/* this is the encoder */
-#define OF_USE_ENCODER
-
 #include "simple_client_server.h"
+
+#ifndef OF_USE_ENCODER
+#error "OF_USE_ENCODER undefined"
+#endif
+
+#ifndef OF_USE_REED_SOLOMON_2_M_CODEC
+#error "OF_USE_REED_SOLOMON_2_M_CODEC undefined"
+#endif
+
+#ifndef OF_USE_LDPC_STAIRCASE_CODEC
+#error "OF_USE_LDPC_STAIRCASE_CODEC undefined"
+#endif
 
 
 /* Prototypes */
@@ -373,4 +382,3 @@ dump_buffer_32 (void	*buf,
 	}
 	printf("\n");
 }
-

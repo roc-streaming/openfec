@@ -18,7 +18,7 @@ on:
 
 jobs:
 
-  build:
+  default-build:
     strategy:
       matrix:
         image: [ubuntu-latest, macos-latest]
@@ -53,9 +53,46 @@ jobs:
           cd build
           make DESTDIR=../dist install
 
+  minimal-build:
+    runs-on: ubuntu-latest
+    name: minimal-build
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: CMake
+        run: |
+          mkdir build
+          cd build
+          cmake \
+            -DOF_USE_REED_SOLOMON_CODEC=OFF \
+            -DOF_USE_REED_SOLOMON_2_M_CODEC=ON \
+            -DOF_USE_LDPC_STAIRCASE_CODEC=OFF \
+            -DOF_USE_2D_PARITY_MATRIX_CODEC=OFF \
+            -DOF_USE_LDPC_FROM_FILE_CODEC=OFF \
+            ..
+
+      - name: Make
+        run: |
+          cd build
+          make -j2
+
+      - name: Make test
+        run: |
+          cd build
+          make test
+
+      - name: Make install
+        run: |
+          cd build
+          make DESTDIR=../dist install
+
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [build]
+    needs: [default-build, minimal-build]
 
     runs-on: ubuntu-latest
     steps:

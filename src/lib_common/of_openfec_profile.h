@@ -34,52 +34,26 @@
 #ifndef OF_OPENFEC_PROFILE_H
 #define OF_OPENFEC_PROFILE_H
 
-#define OF_USE_ENCODER
-#define OF_USE_DECODER
+#include "of_build_config.h"
 
-/*
- * Edit as needed to define which codec(s) you need.
- * By default all codecs are considered.
- *
- * Commenting an include entry below prevents the compiler to read
- * the associated of_codec_profile.h file where the USE_*_
- * macro is defined. Therefore the associated codec will be ignored
- * during compilation.
- *
- * Removing codecs known to be useless can be important for highly
- * specialized usage of OpenFEC, like embedded systems.
- */
+#ifdef OF_USE_REED_SOLOMON_CODEC
 #include "../lib_stable/reed-solomon_gf_2_8/of_codec_profile.h"
+#endif
+
+#ifdef OF_USE_REED_SOLOMON_2_M_CODEC
 #include "../lib_stable/reed-solomon_gf_2_m/of_codec_profile.h"
+#endif
+
+#ifdef OF_USE_LDPC_STAIRCASE_CODEC
 #include "../lib_stable/ldpc_staircase/of_codec_profile.h"
+#endif
+
+#ifdef OF_USE_2D_PARITY_MATRIX_CODEC
 #include "../lib_stable/2d_parity_matrix/of_codec_profile.h"
-//#include "../lib_advanced/ldpc_from_file/of_codec_profile.h"
+#endif
 
-/*
- * Edit as needed to define which core solving system to use.
- * By default all systems are considered.
- *
- * Note that the above codecs require certain solving systems.
- * For instance, LDPC-staircase requires IT decoding, and ML
- * decoding is highly recommended for improved performances.
- *
- * Removing solving systems known to be useless can be important
- * for highly specialized usage of OpenFEC, like embedded systems.
- */
-#define OF_USE_LINEAR_BINARY_CODES_UTILS
-#define OF_USE_GALOIS_FIELD_CODES_UTILS
-
-/**
- * Define if you need SSE optimizations for XOR operations.
- * This is useful for PC usage, with processors that support this
- * extension (i.e. all the processors except the very old ones).
- */
-//#define ASSEMBLY_SSE_OPT
- 
-/*
- * NB: if SSE is not defined, then we'll use regular XOR operations,
- * either on 32 bit or 64 bit integers depending on the operating
- * system.
- */
+#ifdef OF_USE_LDPC_FROM_FILE_CODEC
+#include "../lib_advanced/ldpc_from_file/of_codec_profile.h"
+#endif
 
 #endif // OF_OPENFEC_PROFILE_H

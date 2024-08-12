@@ -35,7 +35,7 @@
 
 /****** GENERAL SETUP OPTIONS; EDIT AS APPROPRIATE ****************************/
 
-#define OF_USE_REED_SOLOMON_CODEC
+#include "../../lib_common/of_build_config.h"
 
 /**
  * Default maximum number of source and encoding symbols for this codec.

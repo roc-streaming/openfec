@@ -33,7 +33,7 @@
 
 /****** GENERAL SETUP OPTIONS; EDIT AS APPROPRIATE ****************************/
 
-#define OF_USE_2D_PARITY_MATRIX_CODEC
+#include "../../lib_common/of_build_config.h"
 
 #ifdef OF_DEBUG
 /* additional parameter for memory statistic purposes */
@@ -44,19 +44,6 @@
 #define MEM_STATS
 #endif
 
-/**
- * Define if you want to enable the use of the ML (Maximum Likelyhood) decoding.
- * If enabled, in practice decoding will start with IT decoding and end with ML
- * decoding (in this case a Gaussian Elimination) if needed.
- *
- * Warning: ML decoding enables to reach the best erasure recovery capabilities,
- * at the expense of potentially significant computation loads, depending on
- * the size and complexity of the simplified system at the end of IT decoding.
- *
- * See the MAX_NB_SOURCE_SYMBOLS_DEFAULT/MAX_NB_ENCODING_SYMBOLS_DEFAULT
- * constants that enable to limit the computation overheads.
- */
-#define ML_DECODING
 
 #ifdef ML_DECODING
 #define OF_2D_PARITY_ML_DECODING

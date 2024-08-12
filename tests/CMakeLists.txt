@@ -31,6 +31,7 @@ endmacro(do_test)
 #
 # PART 1: LDPC-Staircase tests
 #
+if(OF_USE_LDPC_STAIRCASE_CODEC)
 
 # Robustness in front of many transmission types
 #
@@ -192,10 +193,15 @@ do_test(LDPC-SC.ss11 	 -codec=3 -seed=1 -tot_src=100 -tot_rep=100 -symb_sz=11)
 do_test(LDPC-SC.ss12 	 -codec=3 -seed=1 -tot_src=100 -tot_rep=100 -symb_sz=12)
 do_test(LDPC-SC.ss13 	 -codec=3 -seed=1 -tot_src=100 -tot_rep=100 -symb_sz=13)
 
+#
+#
+endif(OF_USE_LDPC_STAIRCASE_CODEC)
+
 
 #
 # PART 2: Reed-Solomon over GF(2m), with m=4, tests
 #
+if(OF_USE_REED_SOLOMON_2_M_CODEC)
 
 do_test(RS_2m_4.src1 		-codec=2 -rs_m=4 -seed=1 -tot_src=1 -tot_rep=23)
 do_test(RS_2m_4.src2 		-codec=2 -rs_m=4 -seed=1 -tot_src=2 -tot_rep=23)
@@ -295,8 +301,14 @@ do_test(RS_2m_8.ss12 		-codec=2 -rs_m=8 -seed=1 -tot_src=100 -tot_rep=100 -symb_
 do_test(RS_2m_8.ss13 		-codec=2 -rs_m=8 -seed=1 -tot_src=100 -tot_rep=100 -symb_sz=13)
 
 #
+#
+endif(OF_USE_REED_SOLOMON_2_M_CODEC)
+
+
+#
 # PART 4: Traditional Reed-Solomon over GF(2^8) tests
 #
+if(OF_USE_REED_SOLOMON_CODEC)
 
 do_test(RS_28.src1 		-codec=1 -rs_m=8 -seed=1 -tot_src=1 -tot_rep=23)
 do_test(RS_28.src2 		-codec=1 -rs_m=8 -seed=1 -tot_src=2 -tot_rep=23)
@@ -344,3 +356,6 @@ do_test(RS_28.ss11 		-codec=1 -rs_m=8 -seed=1 -tot_src=100 -tot_rep=100 -symb_sz
 do_test(RS_28.ss12 		-codec=1 -rs_m=8 -seed=1 -tot_src=100 -tot_rep=100 -symb_sz=12)
 do_test(RS_28.ss13 		-codec=1 -rs_m=8 -seed=1 -tot_src=100 -tot_rep=100 -symb_sz=13)
 
+#
+#
+endif(OF_USE_REED_SOLOMON_CODEC)

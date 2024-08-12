@@ -327,6 +327,7 @@ encode (void)
 		 * is above a certain threshold), so do not sent it since the codec already knows it.
 		 */
 		blk->ldpc_dont_send_last_repair = false;		/* by default */
+#ifdef OF_USE_LDPC_STAIRCASE_CODEC
 		if (codec_id == OF_CODEC_LDPC_STAIRCASE_STABLE) {
 			bool	lib_says_its_null;	/* boolean */
 
@@ -356,6 +357,7 @@ encode (void)
 			}
 #endif
 		}
+#endif
 		if (of_release_codec_instance(ses) != OF_STATUS_OK) {
 			OF_PRINT_ERROR(("ERROR: of_release_codec_instance() failed\n"))
 			goto error;
@@ -378,4 +380,3 @@ encode (void)
 error:
 	return OF_STATUS_ERROR;
 }
-
