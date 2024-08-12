@@ -47,7 +47,7 @@ message(STATUS "Optimization level ${OPTIMIZE}")
 
 endif (DEBUG STREQUAL "ON")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC -Wno-unused-result")
 
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}
   CACHE STRING "output path for libraries")
