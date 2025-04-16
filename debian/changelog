@@ -1,0 +1,78 @@
+openfec (1.4.2.11) unstable; urgency=low
+
+  * Allow disabling codecs at compile time (be15850)
+  * Fix install location of pkgconfig file (#21)
+
+ -- Roc Streaming authors <roc@freelists.org>  Mon, 12 Aug 2024 00:00:00 +0000
+
+openfec (1.4.2.10) unstable; urgency=low
+
+  * Fix build on recent Android NDK (d374d87)
+
+ -- Roc Streaming authors <roc@freelists.org>  Tue, 06 Aug 2024 00:00:00 +0000
+
+openfec (1.4.2.9) unstable; urgency=low
+
+  * Fixes in DEB and RPM packages
+  * Published DEB package is now built on Debian stable
+
+ -- Roc Streaming authors <roc@freelists.org>  Thu, 09 Mar 2023 00:00:00 +0000
+
+openfec (1.4.2.8) unstable; urgency=low
+
+  * Remove executable bits from source files (e44280a)
+
+ -- Roc Streaming authors <roc@freelists.org>  Wed, 08 Mar 2023 00:00:00 +0000
+
+openfec (1.4.2.7) unstable; urgency=low
+
+  * Enable -fPIC
+  * Fix build with older CMake
+  * Fixes in debian packages (#7)
+
+ -- Roc Streaming authors <roc@freelists.org>  Sun, 05 Mar 2023 00:00:00 +0000
+
+openfec (1.4.2.6) unstable; urgency=low
+
+  * Fix building from source tarball (1696611)
+  * Various cmake fixes (#14)
+
+ -- Roc Streaming authors <roc@freelists.org>  Mon, 23 Jan 2023 00:00:00 +0000
+
+openfec (1.4.2.5) unstable; urgency=low
+
+  * Fix work on big-endian targets (8de9214)
+  * Fix codec type checks (22ad081)
+  * Fix printf format errors (73ebd5c)
+  * Update cmake files for distros packaging (8efeda2, 65bd0cb)
+  * Start work on deb and rpm packages
+
+ -- Roc Streaming authors <roc@freelists.org>  Sun, 27 Nov 2022 00:00:00 +0000
+
+openfec (1.4.2.4) unstable; urgency=low
+
+  * Fix building for Android (b6d32ed)
+
+ -- Roc Streaming authors <roc@freelists.org>  Fri, 14 Jun 2019 00:00:00 +0000
+
+openfec (1.4.2.3) unstable; urgency=low
+
+  * Fix of_add_to_multiple_symbols() on 64-bit platforms (983d14e)
+
+ -- Roc Streaming authors <roc@freelists.org>  Thu, 13 Jun 2019 00:00:00 +0000
+
+openfec (1.4.2.2) unstable; urgency=low
+
+  * Fix NULL-pointer dereference in LDPC Staircase (6efefbb)
+
+ -- Roc Streaming authors <roc@freelists.org>  Mon, 27 May 2019 00:00:00 +0000
+
+openfec (1.4.2.1) unstable; urgency=low
+
+  * Fix memory leak in LDPC Staircase (c5f2d48)
+  * Fix operation on 32 bit platforms (6aeab6c)
+  * Fix logging (143d8bc)
+  * Add BUILD_STATIC_LIBS cmake option (1b9e971)
+
+ -- Roc Streaming authors <roc@freelists.org>  Tue, 06 Jun 2017 00:00:00 +0000
+

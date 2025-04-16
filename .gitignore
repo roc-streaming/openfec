@@ -4,5 +4,16 @@
 /perf_eval/descr_stats
 /pc/openfec.pc
 /src/lib_common/of_build_config.h
+
+debian/*.debhelper.log
+debian/*.substvars
+debian/.debhelper
+debian/debhelper-build-stamp
+debian/files
+debian/libopenfec
+debian/libopenfec-dev
+debian/roc
+debian/tmp
+
 ._*
 .justfile
