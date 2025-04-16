@@ -29,21 +29,23 @@ jobs:
       id: version
       run: |
         echo "GIT_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+        echo "PKG_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_OUTPUT
 
     - name: Debian package
       run: |
         ./scripts/make_deb.sh
+        ls -lh dist
 
     - name: Publish
       uses: softprops/action-gh-release@v2
       with:
-        files: |
-          dist/libopenfec_${{ steps.version.outputs.GIT_TAG }}_amd64.deb
-          dist/libopenfec-dev_${{ steps.version.outputs.GIT_TAG }}_amd64.deb
         name: ${{ steps.version.outputs.GIT_TAG }}
         tag_name: ${{ steps.version.outputs.GIT_TAG }}
         fail_on_unmatched_files: true
         draft: true
         prerelease: true
+        files: |
+          dist/libopenfec_${{ steps.version.outputs.PKG_VERSION }}_amd64.deb
+          dist/libopenfec-dev_${{ steps.version.outputs.PKG_VERSION }}_amd64.deb
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
