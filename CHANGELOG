@@ -1,6 +1,15 @@
 Roc Streaming fork CHANGELOG
 ----------------------------
 
+Apr 16, 2025: openfec 1.4.2.12
+
+- Fix build on recent cmake (4.0+)
+- Add CHANGELOG and debian/changelog
+- Add make_deb.sh
+- CI fixes
+
+----
+
 Aug 12, 2024: openfec 1.4.2.11
 
 - Allow disabling codecs at compile time (be15850)

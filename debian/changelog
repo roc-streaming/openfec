@@ -1,3 +1,12 @@
+openfec (1.4.2.12) unstable; urgency=low
+
+  * Fix build on recent cmake (4.0+)
+  * Add CHANGELOG and debian/changelog
+  * Add make_deb.sh
+  * CI fixes
+
+ -- Roc Streaming authors <roc@freelists.org>  Wed, 16 Apr 2025 00:00:00 +0000
+
 openfec (1.4.2.11) unstable; urgency=low
 
   * Allow disabling codecs at compile time (be15850)

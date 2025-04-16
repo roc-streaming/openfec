@@ -1,7 +1,7 @@
 %undefine _disable_source_fetch
 
 Name:      openfec
-Version:   1.4.2.11
+Version:   1.4.2.12
 Release:   1%{?dist}
 Summary:   Application-Level Forward Erasure Correction implementation library
 License:   CeCILL-C and BSD
