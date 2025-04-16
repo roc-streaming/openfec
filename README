@@ -1,7 +1,31 @@
-OpenFEC.org project
+OpenFEC.org project (Roc Streaming fork)
 
 
-1- HOW-TO COMPILE?
+1- ABOUT THIS FORK
+------------------
+
+This repository is part of Roc Streaming ecosystem (https://roc-streaming.org/) and is a fork of the original OpenFEC library published by INRIA (https://openfec.inrialpes.fr/).
+
+The fork is in maintenance mode. No active development happens besides bug-fixes, compatibility fixes for new toolchains, keeping build and packaging scripts up-to-date, etc. The list of changes specific to the fork can be found in CHANGELOG file.
+
+So far the fork hasn't introduced any incompatible changes in the C API.
+
+
+2- DEBIAN PACKAGES
+------------------
+
+You can download pre-built Debian package from GitHub releases:
+	https://github.com/roc-streaming/openfec/releases
+
+Alternatively, you can build packages locally using:
+	./scripts/make_deb.sh
+
+The latter requires Docker to be installed. It will automatically pull
+official debian docker image, build packages, and put them into the
+dist/ directory.
+
+
+3- HOW-TO COMPILE?
 ------------------
 
 In this folder, you can find all the necesary files to compile the library and
@@ -42,7 +66,19 @@ Comments:
   and from any src/lib_stable/*/of_codec_profile.h file.
 
 
-2- HOW-TO CHECK THE BUILD BEFORE USING IT?
+4- HOW-TO INSTALL?
+------------------
+
+From the build directory, type:
+	sudo make install
+
+This will install library and headers to /usr/local.
+
+To specify custom installation prefix, for example /opt/openfec, type:
+	sudo make DESTDIR=/opt/openfec install
+
+
+5- HOW-TO CHECK THE BUILD BEFORE USING IT?
 ------------------------------------------
 
 From the build directory, type:
@@ -54,7 +90,7 @@ parameter values, others are written explicitely in tests/*.c. Tests are all des
 in tests/CMakeLists.txt, using cmake facilities.
 
 
-3- HOW-TO MAKE EXTENSIVE PERFORMANCE EVALUATIONS?
+6- HOW-TO MAKE EXTENSIVE PERFORMANCE EVALUATIONS?
 -------------------------------------------------
 
 Several tools have been designed to carry out extensive performance evaluations,
@@ -77,4 +113,3 @@ For more information on performance evaluation, please have a look at:
 
 NB: there are some requirements in terms of PERL modules available, in particular
 because of the use of mySQL or SQLite.
-

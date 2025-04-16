@@ -1,3 +1,83 @@
+Roc Streaming fork CHANGELOG
+----------------------------
+
+Aug 12, 2024: openfec 1.4.2.11
+
+- Allow disabling codecs at compile time (be15850)
+- Fix install location of pkgconfig file (#21)
+
+----
+
+Aug 06, 2024: openfec 1.4.2.10
+
+- Fix build on recent Android NDK (d374d87)
+
+----
+
+Mar 09, 2023: openfec 1.4.2.9
+
+- Fixes in DEB and RPM packages
+- Published DEB package is now built on Debian stable
+
+----
+
+Mar 08, 2023: openfec 1.4.2.8
+
+- Remove executable bits from source files (e44280a)
+
+----
+
+Mar 05, 2023: openfec 1.4.2.7
+
+- Enable -fPIC
+- Fix build with older CMake
+- Fixes in debian packages (#7)
+
+----
+
+Jan 23, 2023: openfec 1.4.2.6
+
+- Fix building from source tarball (1696611)
+- Various cmake fixes (#14)
+
+----
+
+Nov 27, 2022: openfec 1.4.2.5
+
+- Fix work on big-endian targets (8de9214)
+- Fix codec type checks (22ad081)
+- Fix printf format errors (73ebd5c)
+- Update cmake files for distros packaging (8efeda2, 65bd0cb)
+- Start work on deb and rpm packages
+
+----
+
+Jun 14, 2019: openfec 1.4.2.4
+
+- Fix building for Android (b6d32ed)
+
+----
+
+Jun 13, 2019: openfec 1.4.2.3
+
+- Fix of_add_to_multiple_symbols() on 64-bit platforms (983d14e)
+
+----
+
+May 27, 2019: openfec 1.4.2.2
+
+- Fix NULL-pointer dereference in LDPC Staircase (6efefbb)
+
+----
+
+Jun 6, 2017: openfec 1.4.2.1
+
+- Fix memory leak in LDPC Staircase (c5f2d48)
+- Fix operation on 32 bit platforms (6aeab6c)
+- Fix logging (143d8bc)
+- Add BUILD_STATIC_LIBS cmake option (1b9e971)
+
+
 OpenFEC.org project CHANGELOG
 -----------------------------
 
@@ -74,7 +154,7 @@ Dec 3rd, 2010: release of openfec 1.2.1
 
 Dec 3rd, 2010: release of openfec 1.2.0
 
-Major release: 
+Major release:
 - we added a new optimized Reed-Solomon codec over 2^m (with m=4,8).
   Using m=4 is interesting for very small blocks (since k<n<=15), and is slightly faster than using m=8 in
   that case.
@@ -111,5 +191,3 @@ This is the first release:
     * LDPC from file codec
 - It also contains an advanced simulation environment to let
   you perform easily many different kinds of tests.
-
-
